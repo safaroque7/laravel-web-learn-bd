@@ -12,6 +12,7 @@ class PhoneBookController extends Controller
      */
     public function index()
     {
+        return 'Hello';
         return view('phone-book.index');
     }
 
@@ -20,7 +21,7 @@ class PhoneBookController extends Controller
      */
     public function create()
     {
-        return view('phone-book.create');
+        return view('phone_book.create');
     }
 
     /**

@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <h1> Welcome Laravel 11 </h1>
+    <h1> Data Saved </h1>
 
 </body>
 </html>

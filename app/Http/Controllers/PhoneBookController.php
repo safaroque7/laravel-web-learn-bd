@@ -11,9 +11,10 @@ class PhoneBookController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return 'Hello';
-        return view('phone-book.index');
+    {   
+
+        $contactsCollection = PhoneBook::all();
+        return view('phone-book.index', compact('contactsCollection'));
     }
 
     /**
@@ -21,7 +22,7 @@ class PhoneBookController extends Controller
      */
     public function create()
     {
-        return view('phone_book.create');
+        return view('phone-book.create');
     }
 
     /**
@@ -36,25 +37,31 @@ class PhoneBookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PhoneBook $phoneBook)
+    public function show($id)
     {
-        //
+     $singleContact = PhoneBook::find($id);
+     return view('phone-book.show', compact('singleContact'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PhoneBook $phoneBook)
+    public function edit($id)
     {
-        //
+        $contact = PhoneBook::find($id);
+        return view('phone-book.edit', compact('contact'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PhoneBook $phoneBook)
+    public function update(Request $request, $id)
     {
-        //
+        $contact = PhoneBook::find($id);
+
+        $contact->update($request->all());
+        
+        return redirect()->route('phone-book.index');
     }
 
     /**

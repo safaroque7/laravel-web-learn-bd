@@ -12,9 +12,9 @@ class PhoneBookController extends Controller
      */
     public function index()
     {   
-
         $contactsCollection = PhoneBook::all();
-        return view('phone-book.index', compact('contactsCollection'));
+        return view('phone_book.index', compact('contactsCollection'));
+        // return view('layouts.master', compact('contactsCollection'));
     }
 
     /**
@@ -22,7 +22,7 @@ class PhoneBookController extends Controller
      */
     public function create()
     {
-        return view('phone-book.create');
+        return view('phone_book.create');
     }
 
     /**
@@ -35,32 +35,31 @@ class PhoneBookController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Summary of show
+     * @param \App\Models\PhoneBook $phoneBook
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    
+    public function show(PhoneBook $phoneBook)
     {
-     $singleContact = PhoneBook::find($id);
-     return view('phone-book.show', compact('singleContact'));
+     return view('phone_book.show', compact('phoneBook'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(PhoneBook $phoneBook)
     {
-        $contact = PhoneBook::find($id);
-        return view('phone-book.edit', compact('contact'));
+        return view('phone_book.edit', compact('phoneBook'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, PhoneBook $phoneBook)
     {
-        $contact = PhoneBook::find($id);
-
-        $contact->update($request->all());
         
+        $phoneBook->update($request->all());
         return redirect()->route('phone-book.index');
     }
 
@@ -69,6 +68,7 @@ class PhoneBookController extends Controller
      */
     public function destroy(PhoneBook $phoneBook)
     {
-        //
+        $phoneBook->delete();
+        return redirect()->route('phone-book.index');
     }
 }

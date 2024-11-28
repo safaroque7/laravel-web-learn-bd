@@ -12,12 +12,13 @@ Route::get('/', [ExampleController::class, 'index']);
 
 Route::get('contact', [ExampleController::class, 'contact']);
 
-Route::get('phone-book', [PhoneBookController::class, 'index'])->name('phone-book.index');
-Route::post('phone-book', [PhoneBookController::class, 'store'])->name('phone-book.store');
 
-Route::get('phone-book/create', [PhoneBookController::class, 'create'])->name('phone-book.create');
+// Route::get('phone-book', [PhoneBookController::class, 'index'])->name('phone-book.index');
+// Route::post('phone-book', [PhoneBookController::class, 'store'])->name('phone-book.store');
+// Route::get('phone-book/create', [PhoneBookController::class, 'create'])->name('phone-book.create');
+// Route::get('phone-book/{phoneBook}/edit', [PhoneBookController::class, 'edit'])->name('phone-book.edit');
+// Route::get('phone-book/{phoneBook}', [PhoneBookController::class, 'show'])->name('phone-book.show');
+// Route::post('phone-book/{phoneBook}', [PhoneBookController::class, 'update'])->name('phone-book.update');
+// Route::get('phone-book/{phoneBook}', [PhoneBookController::class, 'destroy'])->name('phone-book.destory');
 
-Route::get('phone-book/{id}/edit', [PhoneBookController::class, 'edit'])->name('phone-book.edit');
-
-Route::get('phone-book/{id}', [PhoneBookController::class, 'show'])->name('phone-book.show');
-Route::put('phone-book/{id}', [PhoneBookController::class, 'update'])->name('phone-book.update');
+Route::resource('phone-book', PhoneBookController::class);

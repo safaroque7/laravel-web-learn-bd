@@ -13,6 +13,7 @@ class ExampleController extends Controller {
    }
 
    public function index(){
-    return view('index');
+    return 'hi';
+    // return view('index');
    }
 }

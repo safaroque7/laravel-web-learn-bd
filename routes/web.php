@@ -17,7 +17,6 @@ Route::post('phone-book', [PhoneBookController::class, 'store'])->name('phone-bo
 
 Route::get('phone-book/create', [PhoneBookController::class, 'create'])->name('phone-book.create');
 
-
 Route::get('phone-book/{id}/edit', [PhoneBookController::class, 'edit'])->name('phone-book.edit');
 
 Route::get('phone-book/{id}', [PhoneBookController::class, 'show'])->name('phone-book.show');

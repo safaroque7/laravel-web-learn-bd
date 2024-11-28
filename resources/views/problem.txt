@@ -1,2 +1,4 @@
 Contact is not edited
 Contact is not deleted
+
+If deleted button is clicked, contact is shown in sing page.

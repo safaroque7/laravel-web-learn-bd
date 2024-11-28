@@ -5,10 +5,17 @@
 @section('contactList')
     <div class="card">
         <div class="card-header">
-            <h1> Phone Book List </h1>
+            <h4> Phone Book List </h4>
         </div>
 
         <div class="card-body">
+
+            @if (session()->has('msg'))
+                <div class="alert alert-{{session('cls')}}">
+                    {!! session('msg') !!}
+                </div>
+            @endif
+
             <table class="table table-bordered table-striped table-hover mb-0">
                 <thead>
                     <th> SL </th>
@@ -41,9 +48,9 @@
                                         class="text-decoration-none text-dark"> Edit </a> </button>
 
                                 <button class="btn btn-danger btn-sm"> <a
-                                    onclick="return confirm('Are you sure you want to delete this item?')"
-                                    href="{{ route('phone-book.destroy', $contactsItem->id) }}"
-                                    class="text-decoration-none text-white"> Delete </a> </button>
+                                        onclick="return confirm('Are you sure you want to delete this item?')"
+                                        href="{{ route('phone-book.destroy', $contactsItem->id) }}"
+                                        class="text-decoration-none text-white"> Delete </a> </button>
                             </td>
                         </tr>
                     @endforeach

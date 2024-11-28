@@ -30,7 +30,13 @@ class PhoneBookController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate( [
+            'name' => 'required|min:3|max:50',
+            'phone_number' => 'required|unique:phone_books|numeric|digits:11',
+        ]);
         PhoneBook::create($request->all());
+        session()->flash('msg', 'Contact created successfully');
+        session()->flash('cls', 'success');
         return redirect()->route('phone-book.index');
     }
 
@@ -58,8 +64,14 @@ class PhoneBookController extends Controller
      */
     public function update(Request $request, PhoneBook $phoneBook)
     {
-        
+        $request->validate( [
+            'name' => 'required|min:3|max:50',
+            'phone_number' => 'required|numeric|digits:11',
+        ]);
+
         $phoneBook->update($request->all());
+        session()->flash('msg', 'Contact Updated Successfully');
+        session()->flash('cls', 'info');
         return redirect()->route('phone-book.index');
     }
 
@@ -69,6 +81,8 @@ class PhoneBookController extends Controller
     public function destroy(PhoneBook $phoneBook)
     {
         $phoneBook->delete();
+        session()->flash('msg', 'Contact Deleted Successfully');
+        session()->flash('cls', 'danger');
         return redirect()->route('phone-book.index');
     }
 }
